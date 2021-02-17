@@ -75,7 +75,7 @@
 <h2 id="GitHub新建个人仓库"><a href="#GitHub新建个人仓库" class="headerlink" title="GitHub新建个人仓库"></a>GitHub新建个人仓库</h2><p>首先，你先要有一个GitHub账户。</p>
 <p>注册完登录后，在GitHub.com中看到一个New repository，新建仓库<br><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrkstcm7ej20ei0c1aah.jpg" alt="img"></p>
 <p>创建一个和你用户名相同的仓库，<a target="_blank" rel="noopener" href="http://后面加.github.io/">后面加.github.io</a>，只有这样，将来要部署到GitHub page的时候，才会被识别，<a target="_blank" rel="noopener" href="http://也就是xxxx.github.io/">也就是xxxx.github.io</a>，其中xxx就是你注册GitHub的用户名。我这里是已经建过了。</p>
-<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217105234215.png" alt="image-20210217105234215"></p>
+<p><img src="https://i.loli.net/2021/02/17/3gnotyjdxIwbVYO.png" alt="image-20210217121815728"></p>
 <p>点击create repository。</p>
 <h2 id="生成SSH添加到GIthub"><a href="#生成SSH添加到GIthub" class="headerlink" title="生成SSH添加到GIthub"></a>生成SSH添加到GIthub</h2><p>回到你的git bash中，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
@@ -116,10 +116,10 @@
 </li>
 </ul>
 <p>登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名<code>ikeanu.tk</code></p>
-<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217115304045.png" alt="image-20210217115304045"></p>
+<p><img src="https://i.loli.net/2021/02/17/gXonsabwDtBQpY3.png" alt="image-20210217121718447"></p>
 <p>然后在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。</p>
 <p>然后打开<code>_config.yml</code>，填上<code>skip_render: CNAME</code>。</p>
-<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217115417362.png" alt="image-20210217115417362"></p>
+<p><img src="https://i.loli.net/2021/02/17/wnTf8yd63UOMiQN.png" alt="image-20210217121540043"></p>
 <p><strong>注</strong>：如果只在GitHub上填域名，则每次更新你的内容的时候都需要重新在GitHub填写你的个人域名</p>
 </section>
     

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+  <meta name="description" content="blog">
+
+
+<link rel="alternate" href="/atom.xml" title="Keanu" type="application/atom+xml">
+<meta name="theme-color" content="#a1d0f6">
+<title>Hexo搭建个人博客 - Keanu</title>
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="shortcut icon" href="/favicon.png">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<nav class="main-nav">
+	
+	    <a href="/">← Home</a>
+	
+	
+	    <a href="/about/">About</a>
+	
+	    <a href="/archives/">Archives</a>
+	
+	<a class="cta" href="/atom.xml" data-no-instant>Subscribe</a>
+</nav>
+
+<section id="wrapper">
+    <article class="post">
+    <header>
+        
+            <h1>Hexo搭建个人博客</h1>
+        
+        <h2 class="headline">Feb 17 2021
+        
+        </h2>
+    </header>
+</article>
+<section id="post-body"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本期博客介绍如何使用hexo+github+Freenom搭建个人博客，用到的工具有Git，Notepa++， Chrome浏览器，Nodejs ，hexo等。</p>
+<h2 id="环境搭建及其初始化"><a href="#环境搭建及其初始化" class="headerlink" title="环境搭建及其初始化"></a>环境搭建及其初始化</h2><ul>
+<li><p><strong>下载安装Git，Node</strong></p>
+<p>   Node下载地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+<p>   Git：<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a></p>
+<p>（由于篇幅限制，自行百度安装过程，按部就班即可，很简单）</p>
+</li>
+<li><p>Hexo官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+<ul>
+<li><p>安装</p>
+<p>  前面已经安装了Git和Node.js，然后用npm，安装Hexo</p>
+<p>  找个文件夹储存你的博客本地文件，右键“git bash here”,打开git控制台（或者用直接<code>cd</code>到你创建的目录下）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>​    完成后用<code>hexo -v</code>查看一下版本来检查是否安装完成</p>
+<p>​    </p>
+<p>​    然后来初始化hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog</span><br></pre></td></tr></table></figure>
+<p>​    这个myblog可以自己命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd myblog &#x2F;&#x2F;进入这个myblog文件夹</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>新建完成后，指定文件夹目录下有：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>** _config.yml: 博客的配置文件**</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>打开hexo的服务，在浏览器输入localhost:4000就可以看到你生成的博客了，按下Ctrl + C可以把服务关闭。（这个服务不是一直存在的，只有你的 <code>hexo server</code>生效的时候可以打开你的本地博客，当服务关闭时，本地博客就打不开了）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="GitHub新建个人仓库"><a href="#GitHub新建个人仓库" class="headerlink" title="GitHub新建个人仓库"></a>GitHub新建个人仓库</h2><p>首先，你先要有一个GitHub账户。</p>
+<p>注册完登录后，在GitHub.com中看到一个New repository，新建仓库<br><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrkstcm7ej20ei0c1aah.jpg" alt="img"></p>
+<p>创建一个和你用户名相同的仓库，<a target="_blank" rel="noopener" href="http://后面加.github.io/">后面加.github.io</a>，只有这样，将来要部署到GitHub page的时候，才会被识别，<a target="_blank" rel="noopener" href="http://也就是xxxx.github.io/">也就是xxxx.github.io</a>，其中xxx就是你注册GitHub的用户名。我这里是已经建过了。</p>
+<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217105234215.png" alt="image-20210217105234215"></p>
+<p>点击create repository。</p>
+<h2 id="生成SSH添加到GIthub"><a href="#生成SSH添加到GIthub" class="headerlink" title="生成SSH添加到GIthub"></a>生成SSH添加到GIthub</h2><p>回到你的git bash中，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。</p>
+<p>可以用以下两条，检查一下你有没有输对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>然后创建SSH,一路回车</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>这个时候它会告诉你已经生成了.ssh的文件夹。在你的电脑中找到这个文件夹。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrkstd106j20kb073gll.jpg" alt="img"></p>
+<p>ssh，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利. key<code> 把你的</code>id_rsa.pub`里面的信息复制进去</p>
+<p>在gitbash中，查看是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<h2 id="将hexo部署到GitHub上"><a href="#将hexo部署到GitHub上" class="headerlink" title="将hexo部署到GitHub上"></a>将hexo部署到GitHub上</h2><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，用notepad++打开站点配置文件 <code>_config.yml</code>，翻到最后，修改为<br>YourgithubName就是你的GitHub账户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YourgithubName&#x2F;YourgithubName.github.io.git #这一行也可以直接去你的GitHub仓库复制过来要复制的是SSH链接而不是HTTP链接，如果是http的链接则以后的每一次的部署都需要登录你的GitHub账号和密码，很麻烦</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>完成后，保存关闭notepad++。</p>
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>其中 <code>hexo clean</code>清除了你之前生成的东西，也可以不加。<br><code>hexo generate</code> 顾名思义，生成静态文章，可以用 <code>hexo g</code>缩写<br><code>hexo deploy</code> 部署文章，可以用<code>hexo d</code>缩写</p>
+<p>注意deploy时可能要你输入username和password。</p>
+<p>得到下图就说明部署成功了，过一会儿就可以在<code>http://yourname.github.io</code> 这个网站看到你的博客了</p>
+<h2 id="设置个人域名"><a href="#设置个人域名" class="headerlink" title="设置个人域名"></a>设置个人域名</h2><p>现在你的个人网站的地址是 <code>yourname.github.io</code>，如果觉得这个网址太low，你也可以自己注册一个域名。</p>
+<ul>
+<li><p>首先，我们需要到去腾讯云，阿里云购买一个个人域名。</p>
+<p>或者也可以<strong>白嫖</strong>，到<a target="_blank" rel="noopener" href="http://freenom.com/">Freenom</a>免费注册一个域名。这个网站是国外的服务器，因此需要 <em>高维度上网</em> 。</p>
+</li>
+</ul>
+<p>​            <strong>注意</strong>：在<a target="_blank" rel="noopener" href="http://freenom.com/"><strong>Freenom</strong></a>注册网站账号时，需要检查自己的ip地址是否和自己填的信息是否一致，如果不一致则会出错。</p>
+<p>​            <strong>解决方法</strong>：用这个网站  <a target="_blank" rel="noopener" href="https://whoer.net/zh">whoer.net</a>  检查自己的ip，然后去谷歌地图随便定位一个和你ip地址一样的地方，填入邮编，街道啥的，电话号码不用填，其他的信息随便编，邮箱最好填一个以防自己的网站账号丢失。</p>
+<ul>
+<li><p>然后用打开cmd </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping yourname.github.io</span><br></pre></td></tr></table></figure>
+<p>看一你部署的GitHub的IP地址，然后把得到的IP地址，放到你的域名中freenom，或者阿里云，腾讯云</p>
+</li>
+<li><p>登录GitHub</p>
+</li>
+</ul>
+<p>登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名<code>ikeanu.tk</code></p>
+<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217115304045.png" alt="image-20210217115304045"></p>
+<p>然后在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。</p>
+<p>然后打开<code>_config.yml</code>，填上<code>skip_render: CNAME</code>。</p>
+<p><img src="C:\Users\Leonardo\AppData\Roaming\Typora\typora-user-images\image-20210217115417362.png" alt="image-20210217115417362"></p>
+<p><strong>注</strong>：如果只在GitHub上填域名，则每次更新你的内容的时候都需要重新在GitHub填写你的个人域名</p>
+</section>
+    
+
+    <footer id="post-meta" class="clearfix">
+        <a href="/about/">
+        <img class="avatar" src="/images/mucun.png">
+        <div>
+            <span class="dark">Keanu</span>
+            <span></span>
+        </div>
+        </a>
+        <section id="sharing">
+            <a title="Share to Twitter" class="twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=http://example.com/2021/02/17/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ - Hexo搭建个人博客 @"><span class="icon-twitter">tweet</span></a>
+            <a title="Share to Facebook" class="facebook" href="#" onclick="
+                window.open(
+                  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+                  'facebook-share-dialog',
+                  'width=626,height=436');
+                return false;"><span class="icon-facebook-sign">Share</span>
+            </a>
+        </section>
+    </footer>
+
+
+  <section id="comment">
+    <button class="btn" id="loadcmts" onclick="cmts.load();">Load Comments</button>
+    <div id="gitment"></div>
+    <script src='/js/gitment.browser.js'></script>
+    <link rel="stylesheet" href=''>
+    <script>
+      var cmts={
+        load:function cmts(){
+          var gitment = new Gitment({
+          
+            id: "Hexo搭建个人博客",
+          
+            owner: "",
+            repo: "",
+            oauth: {
+              client_id: "",
+              client_secret: "",
+            },
+          })
+          gitment.render('gitment');
+          var loadcmt = document.getElementById("loadcmts");
+          var imyourfather = loadcmt.parentNode;
+          imyourfather.removeChild(loadcmts)
+        }
+      }
+    </script>
+  </section>
+
+
+	<footer id="footer">
+	<div id="social">
+		<p class="small">©  Wu Yu| Powered by Hexo & 
+			<a target="_blank" rel="noopener" href="https://github.com/F0r3at/Lights"> Lights</a>
+		</p>
+	</div>
+</footer>
+
+</section>
+
+	<script src="//cdnjs.loli.net/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
+	<script data-no-instant>
+		
+		InstantClick.init('mousedown');
+	</script>
+
+
+
